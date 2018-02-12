@@ -63,14 +63,21 @@ namespace DataStructures
 
         static void InitSimpleLinkedList()
         {
-            var firstNode=new Node(1);
-            var secondNode=new Node(2);
-            firstNode.Next = secondNode;
-            var thirdNode= new Node(3);
-            secondNode.Next = thirdNode;
-            Head = firstNode;
+            Head = Push(null, 1);
+            var secondNode = Push(Head, 2);
+            var thirdNode = Push(secondNode, 3);
             Tail = thirdNode;
+        }
 
+        static Node Push(Node previous,int value)
+        {
+            var newNode=new Node(value);
+
+            if (previous != null)
+            {
+                previous.Next = newNode;
+            }
+            return newNode;
         }
 
         static void AddFirst(int value)
